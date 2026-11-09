@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kossi Simlé BASSAGA</title>
+<meta name="description" content="Kossi Simlé BASSAGA — Spécialiste en informatique médicale et science des données, Ministère de la Santé du Togo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Plan : page de profil éditoriale ; une colonne de lecture + marge de données en police mono ;
+   motif signature = la remontée des données de la pyramide sanitaire (FOSA → National). */
+:root {
+  --bg: #f4f3ee;
+  --surface: #ebe9e1;
+  --ink: #14211f;
+  --muted: #56625f;
+  --line: #cfd2c9;
+  --accent: #0d6b5c;     /* vert institutionnel profond */
+  --signal: #e2a800;     /* jaune du drapeau, usage parcimonieux */
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1715; --surface: #16211e; --ink: #e6ebe7; --muted: #9aa8a3;
+    --line: #2a3733; --accent: #4fc2a9; --signal: #f2c230; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1715; --surface: #16211e; --ink: #e6ebe7; --muted: #9aa8a3;
+  --line: #2a3733; --accent: #4fc2a9; --signal: #f2c230; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 1.15rem; line-height: 1.6;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.1; margin: 0; }
+.mono { font-family: var(--font-mono); font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
+
+/* Navigation */
+nav { border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 18px; padding-bottom: 18px; flex-wrap: wrap; }
+nav .brand { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; text-decoration: none; color: var(--ink); }
+nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; flex-wrap: wrap; }
+nav ul a { font-family: var(--font-mono); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); text-decoration: none; }
+nav ul a:hover { color: var(--accent); }
+
+/* Hero */
+.hero { padding: clamp(48px, 9vw, 104px) 0 clamp(40px, 6vw, 72px); }
+.hero h1 { font-size: clamp(2.3rem, 6.5vw, 4.8rem); font-weight: 800; letter-spacing: -.035em; }
+.hero h1 span { color: var(--accent); }
+.hero .role { font-size: clamp(1.25rem, 2.4vw, 1.6rem); max-width: 34ch; margin: 22px 0 0; font-style: italic; }
+.hero .where { margin-top: 14px; }
+
+/* Pyramide : remontée des données */
+.flow { margin-top: 44px; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; }
+.flow div { padding: 16px 12px 16px 0; position: relative; }
+.flow div + div { padding-left: 16px; border-left: 1px solid var(--line); }
+.flow b { display: block; font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; }
+.flow small { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); }
+.flow .pulse { position: absolute; top: -4px; left: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--signal); animation: travel 6s linear infinite; }
+.flow .pulse.p2 { animation-delay: -2s; }
+.flow .pulse.p3 { animation-delay: -4s; }
+@keyframes travel { from { left: 0; opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } to { left: calc(100% - 8px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .flow .pulse { animation: none; opacity: 0; } html { scroll-behavior: auto; } }
+
+/* Sections */
+section { padding: clamp(48px, 7vw, 80px) 0; border-top: 1px solid var(--line); }
+.sec { display: grid; grid-template-columns: 200px 1fr; gap: 32px; }
+.sec > header .mono { display: block; margin-top: 8px; }
+.sec h2 { font-size: clamp(1.7rem, 3.2vw, 2.2rem); font-weight: 600; letter-spacing: -.02em; }
+.body { max-width: 65ch; }
+.body p { margin: 0 0 1em; }
+
+/* Liste des domaines */
+.domains { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.domains article { padding: 20px 20px 22px 0; border-bottom: 1px solid var(--line); }
+.domains h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 6px; }
+.domains p { margin: 0; font-size: 1rem; color: var(--muted); }
+.domains .mono { display: block; margin-bottom: 8px; color: var(--accent); }
+
+/* Chronologie */
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.timeline li:first-child { border-top: 1px solid var(--line); }
+.timeline .when { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 4px; }
+.timeline strong { font-family: var(--font-display); font-weight: 600; display: block; font-size: 1.1rem; line-height: 1.3; }
+.timeline span { font-size: 1rem; color: var(--muted); }
+
+/* Recherche */
+.status { display: inline-block; font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--accent); color: var(--accent); margin-left: 6px; vertical-align: middle; }
+.status.plan { border-color: var(--signal); color: var(--ink); background: color-mix(in srgb, var(--signal) 22%, transparent); }
+
+.partners { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; padding: 0; list-style: none; }
+.partners li { font-family: var(--font-mono); font-size: .8rem; padding: 6px 12px; background: var(--surface); border: 1px solid var(--line); }
+
+/* Contact */
+.contact h2 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -.03em; }
+.contact .addr { font-family: var(--font-mono); font-size: clamp(.95rem, 2.2vw, 1.2rem); margin-top: 18px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; word-break: break-all; }
+.contact button { font-family: var(--font-mono); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; background: var(--ink); color: var(--bg); border: 0; padding: 9px 14px; cursor: pointer; }
+.contact button:hover { background: var(--accent); }
+
+footer { border-top: 1px solid var(--line); padding: 28px 0 40px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 760px) {
+  .sec { grid-template-columns: 1fr; gap: 18px; }
+  .flow { grid-template-columns: repeat(2, 1fr); }
+  .flow div:nth-child(4) { border-left: 0; padding-left: 0; }
+  .flow div:nth-child(n+4) { border-top: 1px solid var(--line); }
+  .flow .pulse { display: none; }
+  .timeline li { grid-template-columns: 1fr; gap: 4px; }
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Navigation principale">
+  <div class="wrap">
+    <a class="brand" href="#top">K. S. BASSAGA</a>
+    <ul>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#travaux">Travaux</a></li>
+      <li><a href="#recherche">Recherche</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="mono">Lomé, Togo · Santé numérique</p>
+    <h1>Kossi Simlé <span>BASSAGA</span></h1>
+    <p class="role">Spécialiste en informatique médicale et science des données, au service du système national d'information sanitaire.</p>
+    <p class="mono where">Ministère de la Santé · DSNISI · Coordination Nationale de la Santé Numérique</p>
+
+    <div class="flow" aria-label="Remontée des données de la pyramide sanitaire">
+      <span class="pulse" aria-hidden="true"></span>
+      <span class="pulse p2" aria-hidden="true"></span>
+      <span class="pulse p3" aria-hidden="true"></span>
+      <div><small>Niveau 1</small><b>Formation sanitaire</b></div>
+      <div><small>Niveau 2</small><b>District</b></div>
+      <div><small>Niveau 3</small><b>Région</b></div>
+      <div><small>Niveau 4</small><b>National</b></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="apropos">
+  <div class="wrap sec">
+    <header><h2>À propos</h2><span class="mono">Profil</span></header>
+    <div class="body">
+      <p>Je travaille à la Direction du Système National d'Information Sanitaire et de l'Informatique (DSNISI) du Ministère de la Santé du Togo, où je suis chef de la section statistique des maladies. Je suis également membre de la Coordination Nationale de la Santé Numérique et de l'équipe nationale chargée de l'analyse des données.</p>
+      <p>Mon travail se situe à la croisée des systèmes d'information sanitaire, de la gouvernance de la santé numérique et de la production documentaire institutionnelle : faire en sorte que la donnée de santé circule, soit fiable et serve la décision.</p>
+    </div>
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="wrap sec">
+    <header><h2>Expertise</h2><span class="mono">Domaines</span></header>
+    <div class="domains">
+      <article><span class="mono">01 · SNIS</span><h3>DHIS2 et données sanitaires</h3><p>Analyse des données du SNIS, formation des acteurs à DHIS2, statistiques des maladies.</p></article>
+      <article><span class="mono">02 · Interopérabilité</span><h3>DPI, DHIS2, état civil</h3><p>Échanges entre dossier patient informatisé et DHIS2 ; mécanisme Santé – Registre civil – INSEED.</p></article>
+      <article><span class="mono">03 · Gouvernance</span><h3>Stratégie de santé numérique</h3><p>Planification stratégique nationale, cartographie des parties prenantes, coordination des partenaires.</p></article>
+      <article><span class="mono">04 · Systèmes</span><h3>Modélisation hospitalière</h3><p>Modèles de bases de données pour CHU et analyse des parcours patients.</p></article>
+      <article><span class="mono">05 · Surveillance</span><h3>Évaluation épidémiologique</h3><p>Évaluation de systèmes de surveillance, dont la méningite bactérienne dans la région des Savanes.</p></article>
+      <article><span class="mono">06 · Sécurité</span><h3>Sécurité de l'information</h3><p>Formation ISO/IEC 27001 Lead Implementer : management de la sécurité de l'information (SMSI).</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="travaux">
+  <div class="wrap sec">
+    <header><h2>Travaux récents</h2><span class="mono">2026</span></header>
+    <div>
+      <ol class="timeline">
+        <li><div class="when">2026 · S2</div><div><strong>Plan Stratégique National de Santé Numérique</strong><span>Appui au Groupe Technique de Travail : rapports, termes de référence, suivi du processus.</span></div></li>
+        <li><div class="when">Oct. 2026</div><div><strong>Immersion à Kigali (Rwanda)</strong><span>Présentation du système de santé du Togo, au sein de la délégation du Ministère.</span></div></li>
+        <li><div class="when">2026</div><div><strong>Cartographie des acteurs de la santé numérique</strong><span>Recensement et analyse des parties prenantes au Togo.</span></div></li>
+        <li><div class="when">2026</div><div><strong>Interopérabilité Santé – Registre civil – INSEED</strong><span>Atelier technique multisectoriel de conception du mécanisme d'échange.</span></div></li>
+        <li><div class="when">2026</div><div><strong>Plan d'action WHA78.15 : télédermatologie</strong><span>Contribution au groupe de travail sur les maladies de la peau.</span></div></li>
+        <li><div class="when">2026</div><div><strong>Formation SNIS / DHIS2 à Lomé</strong><span>Supports et rapport de formation.</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="recherche">
+  <div class="wrap sec">
+    <header><h2>Recherche</h2><span class="mono">Publications et projets</span></header>
+    <div class="body">
+      <p><strong>Interopérabilité entre dossier patient informatisé et DHIS2.</strong> Mémoire consacré à la circulation des données individuelles du patient vers le système agrégé national. Un article issu de ce travail est soumis. <span class="status">En évaluation</span></p>
+      <p><strong>Projet doctoral en informatique médicale.</strong> Prolongement du mémoire vers la communication des DPI entre eux, avec les standards FHIR et OpenHIE. <span class="status plan">Prévu 2027</span></p>
+      <p class="mono" style="margin-top:28px">Partenaires et cadres de collaboration</p>
+      <ul class="partners">
+        <li>OMS</li><li>Banque mondiale</li><li>SWEDD+</li><li>AUSSSR</li><li>Sand Technologies</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="mono">Contact</p>
+    <h2>Échangeons sur la santé numérique.</h2>
+    <div class="addr">
+      <a href="mailto:kossisimlebassaga@gmail.com" id="email">kossisimlebassaga@gmail.com</a>
+      <button type="button" id="copy">Copier l'adresse</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">© 2026 Kossi Simlé BASSAGA</span>
+    <span class="mono">Mis à jour en novembre 2026</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('copy').addEventListener('click', async function () {
+  var btn = this;
+  try {
+    await navigator.clipboard.writeText(document.getElementById('email').textContent);
+    btn.textContent = 'Adresse copiée';
+  } catch (e) {
+    btn.textContent = 'Sélectionnez l’adresse';
+  }
+  setTimeout(function () { btn.textContent = 'Copier l’adresse'; }, 2200);
+});
+</script>
+</body>
+</html>
